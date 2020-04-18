@@ -14757,6 +14757,19 @@ TEST_F(FormatTest, EmptyLinesInLambdas) {
                "  x(); //\n"
                "\n"
                "};");
+  verifyFormat("[]() { f(); };", "[]() {\n"
+                                 "  f();\n"
+                                 "\n"
+                                 "};");
+  verifyFormat("[]() { f(); };", "[]() {\n"
+                                 "\n"
+                                 "  f();\n"
+                                 "};");
+  verifyFormat("[]() { f(); };", "[]() {\n"
+                                 "\n"
+                                 "  f();\n"
+                                 "\n"
+                                 "};");
 }
 
 TEST_F(FormatTest, FormatsBlocks) {
