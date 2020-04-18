@@ -8809,6 +8809,14 @@ TEST_F(FormatTest, PullTrivialFunctionDefinitionsIntoSingleLine) {
   verifyFormat("void f() {\n"
                "  // Comment\n"
                "}");
+  verifyFormat("void f() { /* Comment */\n"
+               "}",
+               "void f() {\n"
+               "  /* Comment */\n"
+               "}");
+  verifyFormat("void f() { /* Comment */\n"
+               "}",
+               "void f() { /* Comment */ }");
   verifyFormat("{\n"
                "#error {\n"
                "  int a;\n"
