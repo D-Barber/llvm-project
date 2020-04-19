@@ -14461,6 +14461,21 @@ TEST_F(FormatTest, FormatsLambdas) {
                "  return 17;\n"
                "};",
                LLVMWithBeforeLambdaBody);
+  verifyFormat("auto fct_EmptyLambda_SLS_None = []()\n"
+               "{\n"
+               "};",
+               LLVMWithBeforeLambdaBody);
+  verifyFormat("auto fct_CaptureAndParamsBreak_SLS_None =\n"
+               "    [](const int MakeCaptureAndParamsBreakOver)\n"
+               "    {\n"
+               "      return 17;\n"
+               "    };",
+               LLVMWithBeforeLambdaBody);
+  verifyFormat("auto fct_CaptureAndParamsBreak_EmptyLambda_SLS_None =\n"
+               "    [](const int MakeCaptureAndParamsBreakOver)\n"
+               "    {\n"
+               "    };",
+               LLVMWithBeforeLambdaBody);
   verifyFormat("TwoNestedLambdas_SLS_None(\n"
                "    []()\n"
                "    {\n"
@@ -14505,6 +14520,22 @@ TEST_F(FormatTest, FormatsLambdas) {
                "  return 17;\n"
                "};",
                LLVMWithBeforeLambdaBody);
+  verifyFormat("auto fct_EmptyLambda_SLS_Empty = []() {};",
+               LLVMWithBeforeLambdaBody);
+  verifyFormat("auto fct_OneLineLambdaBreak_SLS_Empty =\n"
+               "    [](const int MakeCaptureAndParamsBreakOver) {};",
+               LLVMWithBeforeLambdaBody);
+  verifyFormat("auto fct_CaptureAndParamsBreak_SLS_Empty =\n"
+               "    [](const int MakeCaptureAndParamsBreakOver)\n"
+               "    {\n"
+               "      return 17;\n"
+               "    };",
+               LLVMWithBeforeLambdaBody);
+  verifyFormat("auto fct_CaptureAndParamsBreakBodyBreak_EmptyLambda_SLS_Empty =\n"
+               "    [](const ParameterT MakeCaptureAndParamsBreakOverAndMakeBodyBreakOverToo)\n"
+               "    {\n"
+               "    };",
+               LLVMWithBeforeLambdaBody);
   verifyFormat("TwoNestedLambdas_SLS_Empty(\n"
                "    []()\n"
                "    {\n"
@@ -14538,6 +14569,21 @@ TEST_F(FormatTest, FormatsLambdas) {
                "  return 17;\n"
                "};",
                LLVMWithBeforeLambdaBody);
+  verifyFormat("auto fct_EmptyLambda_SLS_Inline = []()\n"
+               "{\n"
+               "};",
+               LLVMWithBeforeLambdaBody);
+  verifyFormat("auto fct_CaptureAndParamsBreak_SLS_Inline =\n"
+               "    [](const int MakeCaptureAndParamsBreakOver)\n"
+               "    {\n"
+               "      return 17;\n"
+               "    };",
+               LLVMWithBeforeLambdaBody);
+  verifyFormat("auto fct_CaptureAndParamsBreak_EmptyLambda_SLS_Inline =\n"
+               "    [](const int MakeCaptureAndParamsBreakOver)\n"
+               "    {\n"
+               "    };",
+               LLVMWithBeforeLambdaBody);
   verifyFormat("TwoNestedLambdas_SLS_Inline([]() { return Call([]() { return "
                "17; }); });",
                LLVMWithBeforeLambdaBody);
@@ -14565,6 +14611,30 @@ TEST_F(FormatTest, FormatsLambdas) {
   verifyFormat("FctWithOneNestedLambdaEmpty_SLS_All([]() {});",
                LLVMWithBeforeLambdaBody);
   verifyFormat("auto fct_SLS_All = []() { return 17; };",
+               LLVMWithBeforeLambdaBody);
+  verifyFormat("auto fct_EmptyLambda_SLS_All = []() {};",
+               LLVMWithBeforeLambdaBody);
+  verifyFormat("auto fct_BodyBreak_SLS_All = [](const ParameterT)\n"
+               "{\n"
+               "  return longFunctionForcesBodyBreak();\n"
+               "};",
+               LLVMWithBeforeLambdaBody);
+  verifyFormat("auto fct_OneLineLambdaBreak_SLS_All =\n"
+               "    [](const int MakeCaptureAndParamsBreakOver) { return 17; };",
+               LLVMWithBeforeLambdaBody);
+  verifyFormat("auto fct_OneLineLambdaBreak_EmptyLambda_SLS_All =\n"
+               "    [](const int MakeCaptureAndParamsBreakOver) {};",
+               LLVMWithBeforeLambdaBody);
+  verifyFormat("auto fct_CaptureAndParamsBreakBodyBreak_SLS_All =\n"
+               "    [](const int MakeCaptureAndParamsBreakOver)\n"
+               "    {\n"
+               "      return longFunctionForcesBodyBreak();\n"
+               "    };",
+               LLVMWithBeforeLambdaBody);
+  verifyFormat("auto fct_CaptureAndParamsBreakBodyBreak_EmptyLambda_SLS_All =\n"
+               "    [](const ParameterT MakeCaptureAndParamsBreakOverAndMakeBodyBreakOverToo)\n"
+               "    {\n"
+               "    };",
                LLVMWithBeforeLambdaBody);
   verifyFormat("FctWithOneParam_SLS_All(\n"
                "    []()\n"
