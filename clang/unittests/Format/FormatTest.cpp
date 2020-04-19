@@ -25,6 +25,108 @@ namespace clang {
 namespace format {
 namespace {
 
+FormatStyle getHawkeyeStyle() {
+  FormatStyle HawkeyeStyle = getMicrosoftStyle(FormatStyle::LK_Cpp);
+  HawkeyeStyle.AccessModifierOffset = -4;
+  HawkeyeStyle.AlignAfterOpenBracket = FormatStyle::BAS_AlwaysBreak;
+  HawkeyeStyle.AlignConsecutiveMacros = false;
+  HawkeyeStyle.AlignConsecutiveAssignments = false;
+  HawkeyeStyle.AlignConsecutiveDeclarations = false;
+  HawkeyeStyle.AlignEscapedNewlines = FormatStyle::ENAS_DontAlign;
+  HawkeyeStyle.AlignOperands = true;
+  HawkeyeStyle.AlignTrailingComments = true;
+  HawkeyeStyle.AllowAllArgumentsOnNextLine = false;
+  HawkeyeStyle.AllowAllConstructorInitializersOnNextLine = false;
+  HawkeyeStyle.AllowAllParametersOfDeclarationOnNextLine = false;
+  HawkeyeStyle.AllowShortBlocksOnASingleLine = FormatStyle::SBS_Never;
+  HawkeyeStyle.AllowShortCaseLabelsOnASingleLine = false;
+  HawkeyeStyle.AllowShortFunctionsOnASingleLine = FormatStyle::SFS_None;
+  HawkeyeStyle.AllowShortLambdasOnASingleLine = FormatStyle::SLS_Empty;
+  HawkeyeStyle.AllowShortIfStatementsOnASingleLine = FormatStyle::SIS_Never;
+  HawkeyeStyle.AllowShortLoopsOnASingleLine = false;
+  HawkeyeStyle.AlwaysBreakAfterReturnType = FormatStyle::RTBS_None;
+  HawkeyeStyle.AlwaysBreakBeforeMultilineStrings = true;
+  HawkeyeStyle.AlwaysBreakTemplateDeclarations = FormatStyle::BTDS_Yes;
+  HawkeyeStyle.BinPackArguments = false;
+  HawkeyeStyle.BinPackParameters = false;
+  HawkeyeStyle.BraceWrapping.AfterCaseLabel = true;
+  HawkeyeStyle.BraceWrapping.AfterClass = true;
+  HawkeyeStyle.BraceWrapping.AfterControlStatement = FormatStyle::BWACS_Always;
+  HawkeyeStyle.BraceWrapping.AfterEnum = true;
+  HawkeyeStyle.BraceWrapping.AfterExternBlock = true;
+  HawkeyeStyle.BraceWrapping.AfterFunction = true;
+  HawkeyeStyle.BraceWrapping.AfterNamespace = true;
+  HawkeyeStyle.BraceWrapping.AfterStruct = true;
+  HawkeyeStyle.BraceWrapping.AfterUnion = true;
+  HawkeyeStyle.BraceWrapping.BeforeCatch = true;
+  HawkeyeStyle.BraceWrapping.BeforeElse = true;
+  HawkeyeStyle.BraceWrapping.BeforeLambdaBody = true;
+  HawkeyeStyle.BraceWrapping.IndentBraces = false;
+  HawkeyeStyle.BraceWrapping.SplitEmptyFunction = true;
+  HawkeyeStyle.BraceWrapping.SplitEmptyNamespace = true;
+  HawkeyeStyle.BraceWrapping.SplitEmptyRecord = true;
+  HawkeyeStyle.BreakBeforeBinaryOperators = FormatStyle::BOS_NonAssignment;
+  HawkeyeStyle.BreakBeforeBraces = FormatStyle::BS_Custom;
+  HawkeyeStyle.BreakInheritanceList = FormatStyle::BILS_AfterColon;
+  HawkeyeStyle.BreakBeforeTernaryOperators = true;
+  HawkeyeStyle.BreakConstructorInitializers = FormatStyle::BCIS_AfterColon;
+  HawkeyeStyle.BreakStringLiterals = true;
+  HawkeyeStyle.ColumnLimit = 120;
+  HawkeyeStyle.CompactNamespaces = false;
+  HawkeyeStyle.ConstructorInitializerAllOnOneLineOrOnePerLine = true;
+  HawkeyeStyle.ConstructorInitializerIndentWidth = 4;
+  HawkeyeStyle.ContinuationIndentWidth = 4;
+  HawkeyeStyle.Cpp11BracedListStyle = true;
+  HawkeyeStyle.DeriveLineEnding = false;
+  HawkeyeStyle.DerivePointerAlignment = false;
+  HawkeyeStyle.DisableFormat = false;
+  HawkeyeStyle.FixNamespaceComments = false;
+  HawkeyeStyle.IndentCaseBlocks = true;
+  HawkeyeStyle.IndentCaseLabels = false;
+  HawkeyeStyle.IndentGotoLabels = true;
+  HawkeyeStyle.IndentPPDirectives = FormatStyle::PPDIS_None;
+  HawkeyeStyle.IndentWidth = 4;
+  HawkeyeStyle.IndentWrappedFunctionNames = true;
+  HawkeyeStyle.KeepEmptyLinesAtTheStartOfBlocks = false;
+  HawkeyeStyle.MaxEmptyLinesToKeep = 1;
+  HawkeyeStyle.NamespaceIndentation = FormatStyle::NI_Inner;
+  HawkeyeStyle.PenaltyBreakAssignment = 2;
+  HawkeyeStyle.PenaltyBreakBeforeFirstCallParameter = 19;
+  HawkeyeStyle.PenaltyBreakComment = 300;
+  HawkeyeStyle.PenaltyBreakFirstLessLess = 120;
+  HawkeyeStyle.PenaltyBreakString = 1000;
+  HawkeyeStyle.PenaltyBreakTemplateDeclaration = 10;
+  HawkeyeStyle.PenaltyExcessCharacter = 1000000;
+  HawkeyeStyle.PenaltyReturnTypeOnItsOwnLine = 1000;
+  HawkeyeStyle.PointerAlignment = FormatStyle::PAS_Left;
+  HawkeyeStyle.ReflowComments = false;
+  HawkeyeStyle.SortIncludes = false;
+  HawkeyeStyle.SortUsingDeclarations = false;
+  HawkeyeStyle.SpaceAfterCStyleCast = false;
+  HawkeyeStyle.SpaceAfterLogicalNot = false;
+  HawkeyeStyle.SpaceAfterTemplateKeyword = true;
+  HawkeyeStyle.SpaceBeforeAssignmentOperators = true;
+  HawkeyeStyle.SpaceBeforeCpp11BracedList = false;
+  HawkeyeStyle.SpaceBeforeCtorInitializerColon = true;
+  HawkeyeStyle.SpaceBeforeInheritanceColon = true;
+  HawkeyeStyle.SpaceBeforeParens = FormatStyle::SBPO_ControlStatements;
+  HawkeyeStyle.SpaceBeforeRangeBasedForLoopColon = true;
+  HawkeyeStyle.SpaceInEmptyBlock = false;
+  HawkeyeStyle.SpaceInEmptyParentheses = false;
+  HawkeyeStyle.SpacesBeforeTrailingComments = 1;
+  HawkeyeStyle.SpacesInAngles = false;
+  HawkeyeStyle.SpacesInConditionalStatement = false;
+  HawkeyeStyle.SpacesInCStyleCastParentheses = false;
+  HawkeyeStyle.SpacesInParentheses = false;
+  HawkeyeStyle.SpacesInSquareBrackets = false;
+  HawkeyeStyle.SpaceBeforeSquareBrackets = false;
+  HawkeyeStyle.Standard = FormatStyle::LS_Latest;
+  HawkeyeStyle.TabWidth = 4;
+  HawkeyeStyle.UseCRLF = true;
+  HawkeyeStyle.UseTab = FormatStyle::UT_ForContinuationAndIndentation;
+  return HawkeyeStyle;
+}
+
 FormatStyle getGoogleStyle() { return getGoogleStyle(FormatStyle::LK_Cpp); }
 
 class FormatTest : public ::testing::Test {
