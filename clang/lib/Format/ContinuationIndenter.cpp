@@ -964,9 +964,15 @@ unsigned ContinuationIndenter::getNewLineColumn(const LineState &State) {
     return (Style.IndentWidth * State.Line->First->IndentLevel) +
            Style.IndentWidth;
 
-  if (NextNonComment->is(tok::l_brace) && NextNonComment->BlockKind == BK_Block)
+  if (NextNonComment->is(tok::l_brace) &&
+      NextNonComment->BlockKind == BK_Block) {
+    if (NextNonComment->is(TT_LambdaLBrace) &&
+        Style.BraceWrapping.BeforeLambdaBody && Current.NestingLevel == 0) {
+      return State.Stack.back().NestedBlockIndent;
+    }
     return Current.NestingLevel == 0 ? State.FirstIndent
                                      : State.Stack.back().Indent;
+  }
   if ((Current.isOneOf(tok::r_brace, tok::r_square) ||
        (Current.is(tok::greater) &&
         (Style.Language == FormatStyle::LK_Proto ||
